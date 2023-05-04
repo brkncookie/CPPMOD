@@ -1,18 +1,18 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
-SRCS = megaphone.cpp
+SRCS = Dog.cpp Cat.cpp Animal.cpp main.cpp
 OBJS = $(addprefix objs/, $(SRCS:.cpp=.o))
 RM = rm -rf
-NAME = megaphone
+NAME = thezoo
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME)
 
-objs/%.o: %.cpp
+objs/%.o: %.cpp Dog.hpp Cat.hpp Animal.hpp
 	mkdir -p objs
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
