@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <string>
-#include "ICharacter.hpp"
+#include "Character.hpp"
 
+class ICharacter;
 class AMateria
 {
 	protected:
@@ -18,4 +19,4 @@ class AMateria
 		const std::string &getType(void) const;
 		virtual	AMateria	*clone(void) const = 0 ;
 		virtual void use(ICharacter &target);
-}
+};
