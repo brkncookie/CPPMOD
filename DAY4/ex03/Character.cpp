@@ -35,12 +35,12 @@ Character	&Character::operator=(const Character &obj)
 	return (*this);
 }
 
-const std::string	&getName(void) const
+const std::string	&Character::getName(void) const
 {
 	return (this->name);
 }
 
-void	equip(AMateria *m)
+void	Character::equip(AMateria *m)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -52,7 +52,7 @@ void	equip(AMateria *m)
 	}
 }
 
-void	unequip(int idx)
+void	Character::unequip(int idx)
 {
 	if (idx > 3 || idx < 0)
 		return ;
@@ -60,7 +60,7 @@ void	unequip(int idx)
 		this->amaterias[idx] = NULL;
 }
 
-void use(int idx, ICharacter &target)
+void Character::use(int idx, ICharacter &target)
 {
 	if (idx > 3 || idx < 0)
 		return ;

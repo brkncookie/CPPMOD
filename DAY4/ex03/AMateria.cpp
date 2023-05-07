@@ -14,10 +14,10 @@ AMateria::AMateria(const AMateria &obj)
 AMateria &AMateria::operator=(const AMateria &obj)
 {
 	(void) obj;
-	retun (*this);
+	return (*this);
 }
 
-const std::string	AMateria::getType(void)
+const std::string	&AMateria::getType(void) const
 {
 	return (this->type);
 }

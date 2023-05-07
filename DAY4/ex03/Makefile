@@ -3,7 +3,7 @@ CC = c++
 SRCS = Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp AMateria.cpp main.cpp
 OBJS = $(addprefix objs/, $(SRCS:.cpp=.o))
 RM = rm -rf
-NAME = thezoo
+NAME = materias
 
 all: $(NAME)
 

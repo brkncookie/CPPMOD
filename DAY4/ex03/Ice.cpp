@@ -3,7 +3,7 @@
 
 Ice::~Ice(void) {}
 
-Ice::Ice(void): AMateria("cure") {}
+Ice::Ice(void): AMateria("ice") {}
 
 Ice::Ice(const Ice &obj): AMateria(obj)
 {
