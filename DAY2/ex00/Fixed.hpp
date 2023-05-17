@@ -12,7 +12,7 @@ class Fixed
 		Fixed(void);
 		Fixed(const Fixed &tocpy);
 		~Fixed(void);
-		void operator=(const Fixed &tocpy);
+		Fixed &operator=(const Fixed &tocpy);
 		int getRawBits(void) const;
 		void setRawBits(const int raw);
 };

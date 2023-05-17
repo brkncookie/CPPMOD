@@ -15,7 +15,7 @@ class Fixed
 		Fixed(const int		le_int);
 		Fixed(const float	le_float);
 		~Fixed(void);
-		void	operator=(const Fixed	&tocpy);
+		Fixed	&operator=(const Fixed	&tocpy);
 		int	getRawBits(void) const;
 		void	setRawBits(const int	raw);
 		float	toFloat(void) const;

@@ -36,10 +36,15 @@ int main()
 		delete animals[inx];
 	std::cout << "---------TEST THETA---------" << std::endl;
 	Cat	jim;
-	Cat	kim;
+	Cat	kim(jim);
 
-	jim = kim;
+	kim = jim;
 	kim.makeSound();
 	jim.makeSound();
+
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
 	return 0;
 }

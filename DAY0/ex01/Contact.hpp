@@ -19,6 +19,12 @@ class Contact
 		std::string GetPN(void);
 		std::string GetDS(void);
 
+		void SetFN(std::string str);
+		void SetLN(std::string str);
+		void SetNN(std::string str);
+		void SetPN(std::string str);
+		void SetDS(std::string str);
+	private:
 		std::string fn;
 		std::string ln;
 		std::string nn;

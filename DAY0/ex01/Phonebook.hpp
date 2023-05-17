@@ -7,8 +7,8 @@
 class Phonebook
 {
 	public:
-		Phonebook();
-		~Phonebook();
+		Phonebook(void);
+		~Phonebook(void);
 		void	Add(void);
 		void	Search(void);
 		void	Exit(void);

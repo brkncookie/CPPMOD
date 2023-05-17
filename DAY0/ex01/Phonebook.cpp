@@ -14,26 +14,33 @@ Phonebook::~Phonebook(void)
 
 void	Phonebook::Add(void)
 {
+	std::string	tmp;
+
 	std::cout << "First Name: ";
-	std::cin >> this->contacts[this->inx].fn;
-	if (this->contacts[this->inx].fn.empty())
+	std::cin >> tmp;
+	if (std::cin.eof())
 		exit(0);
+	this->contacts[this->inx].SetFN(tmp);
 	std::cout << "Last Name: ";
-	std::cin >> this->contacts[this->inx].ln;
-	if (this->contacts[this->inx].ln.empty())
+	std::cin >> tmp;
+	if (std::cin.eof())
 		exit(0);
+	this->contacts[this->inx].SetLN(tmp);
 	std::cout << "Nickname: ";
-	std::cin >> this->contacts[this->inx].nn;
-	if (this->contacts[this->inx].nn.empty())
+	std::cin >> tmp;
+	if (std::cin.eof())
 		exit(0);
+	this->contacts[this->inx].SetNN(tmp);
 	std::cout << "Phone Number: ";
-	std::cin >> this->contacts[this->inx].pn;
-	if (this->contacts[this->inx].pn.empty())
+	std::cin >> tmp;
+	if (std::cin.eof())
 		exit(0);
+	this->contacts[this->inx].SetPN(tmp);
 	std::cout << "Darkest Secret: ";
-	std::cin >> this->contacts[this->inx].ds;
-	if (this->contacts[this->inx].ds.empty())
+	std::cin >> tmp;
+	if (std::cin.eof())
 		exit(0);
+	this->contacts[this->inx].SetDS(tmp);
 	this->inx++;
 	if (this->inx == MAX)
 	{
@@ -55,7 +62,6 @@ void	Phonebook::Search(void)
 {
 	int	inx;
 	std::string	headers[4] = {"Index", "First Name", "Last Name", "Nickname"};
-	int	lmt = (this->is_max_inx) ? MAX : this->inx;
 
 	inx = 0;
 	while (inx < 4)
@@ -63,7 +69,7 @@ void	Phonebook::Search(void)
 	std::cout << std::endl;
 
 	inx = 0;
-	while (inx < lmt)
+	while (inx < ((this->is_max_inx) ? MAX : this->inx))
 	{
 		std::cout << "|" << std::right << std::setw(10) << inx;
 		FormatNPut(this->contacts[inx].GetFN());
@@ -73,13 +79,13 @@ void	Phonebook::Search(void)
 		inx++;
 	}
 	std::cout << "Enter An Index: ";
-	if (!(std::cin >> inx) || inx < 0 || inx > 7 || (!this->is_max_inx && inx >= this->inx))
+	if (!(std::cin >> inx) || inx < 0 || inx > ((this->is_max_inx) ? (MAX - 1) : (this->inx - 1)) || (!inx && !this->inx))
 	{
 		if (std::cin.eof())
 			exit(0);
 		std::cout << "Invalid index" << std::endl;
 		std::cin.clear();
-		std::cin.ignore(100, '\n');
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return;
 	}
 	else

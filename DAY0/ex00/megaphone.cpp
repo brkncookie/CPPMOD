@@ -4,12 +4,17 @@ void	yell(char	**strs)
 {
 	int	inx;
 	int	jnx;
+	std::string	tmp;
 
 	inx = -1;
 	while (strs[++inx] && (jnx = -1))
-		while(strs[inx][++jnx])
-			std::cout << (char)std::toupper(strs[inx][jnx]);
+	{
+		tmp = strs[inx];
+		while(tmp[++jnx])
+			std::cout << (char)std::toupper(tmp[jnx]);
+	}
 }
+
 int	main(int argc, char **argv)
 {
 	(argc < 2) ? (void)(std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *") : yell(&argv[1]);

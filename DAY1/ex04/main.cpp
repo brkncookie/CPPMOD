@@ -6,7 +6,7 @@ int	main(int argc, char **argv)
 {
 	int	inx;
 
-	if (argc != 4)
+	if (argc != 4 || !(*argv[2]))
 		return (std::cerr << "Usage: " << argv[0] << " filename s1 s2" << std::endl, 1);
 	std::string	file(argv[1]);
 	std::string	s1(argv[2]);

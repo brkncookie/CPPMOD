@@ -23,7 +23,7 @@ class Fixed
 		bool	operator==(const Fixed	&obj) const;
 		bool	operator!=(const Fixed	&obj) const;
 
-		void	operator=(const Fixed	&tocpy);
+		Fixed	&operator=(const Fixed	&tocpy);
 		Fixed	operator+(const Fixed	&obj) const;
 		Fixed	operator-(const Fixed	&obj) const;
 		Fixed	operator/(const Fixed	&obj) const;

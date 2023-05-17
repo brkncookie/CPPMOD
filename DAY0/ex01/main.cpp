@@ -15,7 +15,7 @@ int	main(void)
 	{
 		std::cout << "Enter a CMD:";
 		std::cin >> inp;
-		if (inp.empty())
+		if (std::cin.eof())
 			exit(0);
 		if (inp == "ADD")
 			pb.Add();
@@ -26,6 +26,8 @@ int	main(void)
 		else
 		{
 			std::cout << "Invalid CMD" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
 		}
 	}

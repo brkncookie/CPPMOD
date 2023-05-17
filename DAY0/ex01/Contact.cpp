@@ -37,3 +37,28 @@ std::string	Contact::GetDS(void)
 {
 	return (this->ds);
 }
+
+void	Contact::SetFN(std::string str)
+{
+	this->fn = str;
+}
+
+void	Contact::SetLN(std::string str)
+{
+	this->ln = str;
+}
+
+void	Contact::SetNN(std::string str)
+{
+	this->nn = str;
+}
+
+void	Contact::SetPN(std::string str)
+{
+	this->pn = str;
+}
+
+void	Contact::SetDS(std::string str)
+{
+	this->ds = str;
+}

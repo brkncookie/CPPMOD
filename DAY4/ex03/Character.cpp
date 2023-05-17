@@ -28,10 +28,16 @@ Character::Character(const Character &obj): name(obj.name)
 
 Character	&Character::operator=(const Character &obj)
 {
-	this->name = obj.name;
-	for (int i = 0; i < 4; i++)
-		if (obj.amaterias[i])
-			this->amaterias[i] = obj.amaterias[i]->clone();
+	if (this != &obj)
+	{
+		this->name = obj.name;
+		for (int i = 0; i < 4; i++)
+			if(amaterias[i])
+				delete amaterias[i];
+		for (int i = 0; i < 4; i++)
+			if (obj.amaterias[i])
+				this->amaterias[i] = obj.amaterias[i]->clone();
+	}
 	return (*this);
 }
 

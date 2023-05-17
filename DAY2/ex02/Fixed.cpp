@@ -16,10 +16,11 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called" << std::endl;
 }
 
-void	Fixed::operator=(const Fixed &tocpy)
+Fixed	&Fixed::operator=(const Fixed &tocpy)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->fxd_point_num = tocpy.getRawBits();
+	return (*this);
 }
 
 int	Fixed::getRawBits(void) const
@@ -56,36 +57,36 @@ float	Fixed::toFloat(void) const
 
 bool	Fixed::operator>(const Fixed	&obj) const
 {
-	return (this->fxd_point_num > obj.getRawBits());
+	return (this->toFloat() > obj.toFloat());
 }
 
 
 bool	Fixed::operator<(const Fixed	&obj) const
 {
-	return (this->fxd_point_num < obj.getRawBits());
+	return (this->toFloat() < obj.toFloat());
 }
 
 
 bool	Fixed::operator<=(const Fixed	&obj) const
 {
-	return (this->fxd_point_num <= obj.getRawBits());
+	return (this->toFloat() <= obj.toFloat());
 }
 
 bool	Fixed::operator>=(const Fixed	&obj) const
 {
-	return (this->fxd_point_num >= obj.getRawBits());
+	return (this->toFloat() >= obj.toFloat());
 }
 
 
 bool	Fixed::operator!=(const Fixed	&obj) const
 {
-	return (this->fxd_point_num != obj.getRawBits());
+	return (this->toFloat() != obj.toFloat());
 }
 
 
 bool	Fixed::operator==(const Fixed	&obj) const
 {
-	return (this->fxd_point_num == obj.getRawBits());
+	return (this->toFloat() == obj.toFloat());
 }
 
 Fixed	Fixed::operator+(const Fixed	&obj) const

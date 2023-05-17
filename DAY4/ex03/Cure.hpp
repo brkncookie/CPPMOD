@@ -11,7 +11,6 @@ class Cure: public AMateria
 		~Cure(void);
 		Cure &operator=(const Cure &obj);
 
-		const std::string &getType(void) const;
 		AMateria	*clone(void) const;
 		void use(ICharacter &target);
 };

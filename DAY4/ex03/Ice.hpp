@@ -11,7 +11,6 @@ class Ice: public AMateria
 		~Ice(void);
 		Ice &operator=(const Ice &obj);
 
-		const std::string &getType(void) const;
 		AMateria	*clone(void) const;
 		void use(ICharacter &target);
 };
