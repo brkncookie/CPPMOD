@@ -1,20 +1,20 @@
 #include "Form.hpp"
 
-Form::Form(void): name("defacto"), signed(false), signGrade(150), gradeExec(150)
+Form::Form(void): name("defacto"), sign(false), signGrade(150), execGrade(150)
 {
 	std::cout << "Form Default Constructor Called" << std::endl;
 }
 
-Form::Form(int signGrade, int gradeExec,  std::string &name): name(name), signed(false), signGrade(signGrade), gradeExec(gradeExec)
+Form::Form(int signGrade, int execGrade,  const std::string &name): name(name), sign(false), signGrade(signGrade), execGrade(execGrade)
 {
-	if (signGrade < 1 || gradeExec < 1)
+	if (signGrade < 1 || execGrade < 1)
 		throw Form::GradeTooLowException();
-	else if (signGrade > 150 || gradeExec > 150)
+	else if (signGrade > 150 || execGrade > 150)
 		throw Form::GradeTooHighException();
 	std::cout << "Form Args Constructor Called" << std::endl;
 }
 
-Form::Form(const Form &obj): name(obj.getName()), signed(obj.getSigned()), signGrade(obj.getSignGrade()), gradeExec(obj.getSignExec())
+Form::Form(const Form &obj): name(obj.getName()), sign(obj.getSigned()), signGrade(obj.getSignGrade()), execGrade(obj.getExecGrade())
 {
 	std::cout << "Form Copy Constructor Called" << std::endl;
 }
@@ -26,8 +26,9 @@ Form::~Form(void)
 
 const Form	&Form::operator=(const Form &obj)
 {
-	this->signed = obj.getSigned();
+	this->sign = obj.getSigned();
 	std::cout << "Form Copy Assignment Operator Called" << std::endl;
+	return (*this);
 }
 
 const	char *Form::GradeTooLowException::what(void) const throw()
@@ -42,7 +43,7 @@ const	char *Form::GradeTooHighException::what(void) const throw()
 
 bool	Form::getSigned(void) const
 {
-	return (this->signed);
+	return (this->sign);
 }
 
 int	Form::getSignGrade(void) const
@@ -60,16 +61,16 @@ std::string	Form::getName(void) const
 	return (this->name);
 }
 
-void beSigned(const Bureaucrat &obj)
+void Form::beSigned(const Bureaucrat &obj)
 {
 	if (obj.getGrade() > this->signGrade)
 		throw Form::GradeTooLowException();
 
-	this->signed = true;
+	this->sign = true;
 }
 
 std::ostream	&operator<<(std::ostream &os, const Form &obj)
 {
-	    return (os << "Form name: " << src.getName() << ", signed: " << src.getSigned() << ", grade to sign: " \
-			    << src.getSignGrade() << ", grade to execute: " << src.getExecGrade());
+	    return (os << "Form name: " << obj.getName() << ", sign: " << obj.getSigned() << ", grade to sign: " \
+			    << obj.getSignGrade() << ", grade to execute: " << obj.getExecGrade());
 }

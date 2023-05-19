@@ -4,7 +4,7 @@
 int main(void)
 {
 	{
-		Form f1();
+		Form f1;
 		Bureaucrat b2("b2", 150);
 
 
@@ -25,10 +25,16 @@ int main(void)
 	}
 	{
 		try
-		{
-			Bureaucrat b2("b2", -1);
+		{;
+			Form f1(42, 42, "42Form");
+			Bureaucrat b2("b2", 150);
+
+			std::cout << f1 << std::endl;
+			std::cout << b2 << std::endl;
+			f1.beSigned(b2);
+
 		}
-		catch (Bureaucrat::GradeTooLowException &e)
+		catch (Form::GradeTooLowException &e)
 		{
 			std::cerr << e.what() << std::endl;
 		}

@@ -67,7 +67,7 @@ void	Bureaucrat::decGrade(void)
 		throw Bureaucrat::GradeTooHighException();
 }
 
-void	Bureaucrat::signForm(Form &obj)
+void	Bureaucrat::signForm(AForm &obj)
 {
 	try
 	{
@@ -78,6 +78,20 @@ void	Bureaucrat::signForm(Form &obj)
 	{
         	std::cout << this->name << " cannot sign " << obj.getName() << " because " << e.what() << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(const AForm &obj)
+{
+	try
+	{
+		obj.execute(*this);
+		std::cout << this->name << " executed " << obj.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->name << " couldn't execute the " << obj.getName() << " form, " << "becuase " << e.what() << std::endl;
+	}
+
 }
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat &obj)
