@@ -49,7 +49,7 @@ template <typename T> class Array
 
 		T	&operator[](size_t inx)
 		{
-			if (inx > sze)
+			if (inx >= sze)
 				throw std::out_of_range("stay in da range dummmy");
 			return (this->ptr[inx]);
 		}
