@@ -4,6 +4,7 @@
 #include <map>
 #include <cstdlib>
 #include <fstream>
+#include <sstream>
 
 typedef enum e_errs
 {
