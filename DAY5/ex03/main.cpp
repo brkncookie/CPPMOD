@@ -7,6 +7,7 @@
 
 int main(void)
 {
+	try
 	{
 		Intern i1;
 		AForm *f1;
@@ -28,5 +29,9 @@ int main(void)
 		std::cout << std::endl;
 		std::cout << "unknown request here" << std::endl;
 		f1 = i1.makeForm("unknown request", "jack");
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 }

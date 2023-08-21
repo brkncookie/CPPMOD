@@ -6,16 +6,11 @@
 #include <deque>
 #include <algorithm>
 
-class NoEelement: public std::exception
-{
-	const char	*what(void) const throw();
-};
-
 template <typename T> typename T::iterator easyfind(T &container, int content)
 {
 	typename T::iterator itr = std::find(container.begin(), container.end(), content);
 
 	if (itr == container.end())
-		throw NoEelement();
+			throw std::out_of_range("element not found !");
 	return (itr);
 }

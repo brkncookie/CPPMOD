@@ -11,6 +11,11 @@ BitcoinExchange::BitcoinExchange(void)
 		std::exit(EXIT_FAILURE);
 	}
 	std::getline(infile, row);
+	if (infile.eof() || row != std::string("date,exchange_rate"))
+	{
+		this->throw_err(INV_FILE, "NULL", 0);
+		std::exit(EXIT_FAILURE);
+	}
 	while(std::getline(infile, row))
 		this->data_csv[row.substr(0, 10)] = std::strtod(row.substr(11, row.length()).c_str(), NULL);
 }
@@ -41,6 +46,11 @@ void	BitcoinExchange::calculate_input(char *filename)
 		std::exit(EXIT_FAILURE);
 	}
 	std::getline(infile, row);
+	if (infile.eof() || row != std::string("date | value"))
+	{
+		this->throw_err(INV_FILE, "NULL", 0);
+		std::exit(EXIT_FAILURE);
+	}
 	while(std::getline(infile, row) && !(quantity = 0))
 		valid_row(row, quantity, date) ? this->format_print(quantity, date) : throw_err(BAD_INP, row, quantity);
 }
@@ -90,7 +100,7 @@ bool	BitcoinExchange::valid_numeric(std::string &num)
 
 bool	BitcoinExchange::valid_dmy(int day, int month, int year)
 {
-	if (day < 0 || day > 31 || month < 0 || month > 2021 || year < 2009 || year > 2023)
+	if (day < 0 || day > 31 || month < 0 || month > 12 || year < 2009 || year > 2023)
 		return (false);
 	if (month == 11 || month == 9 || month == 6 || month == 4)
 		return (day <= 30);

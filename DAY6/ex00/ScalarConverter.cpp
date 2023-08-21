@@ -17,11 +17,11 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj)
 
 void	ScalarConverter::convert(std::string &str)
 {
-	double data;
+	double data = 0.0;
 
-	if (this->valid_pseudo(str))
+	if (ScalarConverter::valid_pseudo(str))
 		format_print(data, &str);
-	else if (this->valid_i(str, data) || this->valid_f(str, data) || this->valid_c(str, data))
+	else if (ScalarConverter::valid_i(str, data) || ScalarConverter::valid_f(str, data) || ScalarConverter::valid_c(str, data))
 		format_print(data, NULL);
 	else
 		std::cout << "Invalid Conversion" << std::endl;
@@ -46,7 +46,10 @@ void	ScalarConverter::format_print(double data, std::string *str)
 		in = static_cast<int>(data);
 		fl = static_cast<float>(data);
 		std::cout << "char: " << (std::isprint(ch) ? std::string("'") + std::string(&ch).erase(1) + std::string("'") : "Non displayable") << std::endl;
-		std::cout << "int: " << in << std::endl;
+		if (in == INT_MIN && data != INT_MIN)
+			std::cout << "int: " << "Non displayable" << std::endl;
+		else
+			std::cout << "int: " << in << std::endl;
 		std::cout << "float: " << fl << (fl - in ? "f" : ".0f") << std::endl;
 		std::cout << "double: " << data << (data -  in ? "" : ".0") << std::endl;
 	}
@@ -69,6 +72,7 @@ bool	ScalarConverter::valid_i(std::string &str, double &data)
 		dig = dig + (str[inx] - 48);
 		if ((dig * sig) < INT_MIN || (dig * sig) > INT_MAX)
 			return (false);
+		inx++;
 	}
 	data = static_cast<double>(dig * sig);
 	return (true);

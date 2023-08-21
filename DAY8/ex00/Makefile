@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
-SRCS = main.cpp NoEelement.cpp
+SRCS = main.cpp
 OBJS = $(addprefix objs/, $(SRCS:.cpp=.o))
 RM = rm -rf
 NAME = easyfind

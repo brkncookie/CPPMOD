@@ -30,6 +30,7 @@ int main(void)
 		b2.executeForm(p1);
 	}
 	std::cout << "				ShrubberyCreationForm's Part" << std::endl;
+	try
 	{
 		ShrubberyCreationForm p1;
 		Bureaucrat b2("b2", 145);
@@ -41,6 +42,11 @@ int main(void)
 		std::cout << p1 << std::endl;
 		b2.executeForm(p1);
 	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
 	{
 		ShrubberyCreationForm p1;
 		Bureaucrat b2("b2", 100);
@@ -51,6 +57,10 @@ int main(void)
 		p1.beSigned(b2);
 		std::cout << p1 << std::endl;
 		b2.executeForm(p1);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "				RobotomyRequestForm Part" << std::endl;
 	{

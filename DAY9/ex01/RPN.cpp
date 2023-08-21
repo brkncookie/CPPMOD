@@ -80,7 +80,7 @@ bool	RPN::parse(std::string	&exp)
 		inx++;
 	}
 
-	if (!n_oprnds || !n_oprtrs)
+	if ((n_oprnds == 1 && n_oprtrs) || (!n_oprnds && n_oprtrs))
 		return (false);
 	return (true);
 }

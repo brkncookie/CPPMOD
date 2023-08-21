@@ -1,6 +1,8 @@
 #include "MutantStack.hpp"
 int main()
 {
+	{
+	std::cout << "			Start of first test" << std::endl;
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -26,5 +28,33 @@ int main()
 	}
 
 	std::stack<int> s(mstack);
-	return 0;
+	std::cout << "			End of first test" << std::endl;
+	}
+	{
+	std::cout << "			Start of second test" << std::endl;
+    MutantStack<int> mstack;
+    mstack.push(5);
+    mstack.push(17);
+    mstack.push(3);
+    mstack.push(10);
+
+    std::cout << "Elements in MutantStack using iterator:" << std::endl;
+    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it) 
+	{
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    MutantStack<int>::iterator it = mstack.begin();
+    ++it;
+    *it = 20;
+
+    std::cout << "Modified elements in MutantStack using iterator:" << std::endl;
+    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it) 
+	{
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+	std::cout << "			End of second test" << std::endl;
+	}
 }

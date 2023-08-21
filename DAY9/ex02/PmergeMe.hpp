@@ -18,6 +18,5 @@ class PmergeMe
 	private:
 		std::vector<int> vec;
 		std::deque<int> deq;
-		void	sortDeq(void);
-		void	sortVec(void);
+		template <typename T> void	sortVec(T &ints);
 };

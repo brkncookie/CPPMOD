@@ -47,7 +47,7 @@ template <typename T> class Array
 			return (*this);
 		}
 
-		T	&operator[](size_t inx)
+		T	&operator[](size_t inx) const
 		{
 			if (inx >= sze)
 				throw std::out_of_range("stay in da range dummmy");

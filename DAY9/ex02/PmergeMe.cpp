@@ -57,11 +57,12 @@ void	PmergeMe::sortEm(void)
 		std::cout << "Array is empty, call plotEm() to plot it with numbers" << std::endl;
 		return ;
 	}
-	vec_s = clock();
-	this->sortVec();
-	vec_e = clock();
+	vec_s = std::clock();
+	this->sortVec(this->vec);
+	vec_e = std::clock();
 	deq_s = std::clock();
-	this->sortDeq();
+	this->sortVec(this->deq);
+	vec_e = std::clock();
 	deq_e = std::clock();
 
 	std::cout << "Before: " << std::endl;
@@ -80,64 +81,33 @@ void	PmergeMe::sortEm(void)
 
 /* PRIVATE METHODS */
 
-void	PmergeMe::sortVec(void)
+template <typename T> void	PmergeMe::sortVec(T &ints)
 {
 	int	even;
 	std::vector<std::pair<int, int> > vecof2;
-	std::vector<int>::iterator itr;
+	typename T::iterator itr;
 	size_t	inx;
 
-	even = this->vec.size() % 2 ? this->vec.back() : -1;
-	this->vec.size() % 2 ? this->vec.pop_back() : (void)inx;
+	even = ints.size() % 2 ? ints.back() : -1;
+	ints.size() % 2 ? ints.pop_back() : (void)inx;
 
 	inx = 0;
-	while(inx < this->vec.size())
+	while(inx < ints.size())
 	{
-		std::pair<int, int> two(this->vec[inx], this->vec[inx + 1]);
+		std::pair<int, int> two(ints[inx], ints[inx + 1]);
 		if (two.first < two.second)
 			std::swap(two.first, two.second);
 		vecof2.push_back(two);
 		inx += 2;
 	}
-	this->vec.resize(0);
+	ints.resize(0);
 	std::sort(vecof2.begin(), vecof2.end());
 	inx = 0;
 	while(inx < vecof2.size())
-		this->vec.push_back(vecof2[inx++].first);
+		ints.push_back(vecof2[inx++].first);
 	inx = 0;
 	while(inx < vecof2.size())
-		(itr = std::upper_bound(this->vec.begin(), this->vec.end(), vecof2[inx].second), this->vec.insert(itr, vecof2[inx++].second));
+		(itr = std::upper_bound(ints.begin(), ints.end(), vecof2[inx].second), ints.insert(itr, vecof2[inx++].second));
 	if (even != -1)
-		(itr = std::upper_bound(this->vec.begin(), this->vec.end(), even), this->vec.insert(itr, even));
-}
-
-void	PmergeMe::sortDeq(void)
-{
-	int	even;
-	std::deque<std::pair<int, int> > deqof2;
-	std::deque<int>::iterator itr;
-	size_t	inx;
-
-	even = this->deq.size() % 2 ? this->deq.back() : -1;
-	this->deq.size() % 2 ? this->deq.pop_back() : (void)inx;
-
-	inx = 0;
-	while(inx < this->deq.size())
-	{
-		std::pair<int, int> two(this->deq[inx], this->deq[inx + 1]);
-		if (two.first < two.second)
-			std::swap(two.first, two.second);
-		deqof2.push_back(two);
-		inx += 2;
-	}
-	this->deq.resize(0);
-	std::sort(deqof2.begin(), deqof2.end());
-	inx = 0;
-	while(inx < deqof2.size())
-		this->deq.push_back(deqof2[inx++].first);
-	inx = 0;
-	while(inx < deqof2.size())
-		(itr = std::upper_bound(this->deq.begin(), this->deq.end(), deqof2[inx].second), this->deq.insert(itr, deqof2[inx++].second));
-	if (even != -1)
-		(itr = std::upper_bound(this->deq.begin(), this->deq.end(), even), this->deq.insert(itr, even));
+		(itr = std::upper_bound(ints.begin(), ints.end(), even), ints.insert(itr, even));
 }

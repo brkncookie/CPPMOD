@@ -36,6 +36,7 @@ void	identify(Base &p)
 	{
 		r = dynamic_cast<A &>(p);
 		std::cout << "Class Type is: A" << std::endl;
+		return ;
 	}
 	catch (std::exception &e)
 	{
@@ -46,6 +47,7 @@ void	identify(Base &p)
 	{
 		r = dynamic_cast<B &>(p);
 		std::cout << "Class Type is: B" << std::endl;
+		return ;
 	}
 	catch (std::exception &e)
 	{
@@ -56,9 +58,10 @@ void	identify(Base &p)
 	{
 		r = dynamic_cast<C &>(p);
 		std::cout << "Class Type is: C" << std::endl;
+		return ;
 	}
 	catch (std::exception &e)
 	{
-
+		std::cout << "Unknown Type !" << std::endl;
 	}
 }

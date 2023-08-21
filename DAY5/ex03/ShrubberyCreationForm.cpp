@@ -31,7 +31,7 @@ void	ShrubberyCreationForm::doAction(void) const
 {
 	std::ofstream file_out;
 	file_out.open((this->target + "_shrubbery").c_str(), std::ios::out | std::ios::trunc);
-	if (!file_out)
+	if (!file_out.is_open())
 		throw std::ofstream::failure("Failed To Open");
 	file_out << "              ,@@@@@@@,\n";
 	file_out << "      ,,,.   ,@@@@@@/@@,  .oo8888o.\n";
